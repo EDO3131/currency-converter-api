@@ -10,7 +10,12 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:8082'],
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:8082',
+    'https://currency-converter-one-iota-39.vercel.app',
+    /^https:\/\/[^.]+\.vercel\.app$/,
+  ],
 }));
 
 app.use(express.json());
