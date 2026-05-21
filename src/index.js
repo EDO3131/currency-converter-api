@@ -5,6 +5,8 @@ const cors = require('cors');
 const ratesRouter = require('./routes/rates');
 const currenciesRouter = require('./routes/currencies');
 const stocksRouter = require('./routes/stocks');
+const authRouter = require('./routes/auth');
+const historyRouter = require('./routes/history');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -32,6 +34,8 @@ app.get('/health', (_req, res) => {
 app.use('/api/rates', ratesRouter);
 app.use('/api/currencies', currenciesRouter);
 app.use('/api/stocks', stocksRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/history', historyRouter);
 
 app.use((err, _req, res, _next) => {
   console.error(err);
