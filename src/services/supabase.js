@@ -4,7 +4,13 @@ console.log('[supabase] usando key:', process.env.SUPABASE_SERVICE_ROLE_KEY?.sli
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
+  process.env.SUPABASE_SERVICE_ROLE_KEY,
+  {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false,
+    },
+  }
 );
 
 async function getCurrencies() {
