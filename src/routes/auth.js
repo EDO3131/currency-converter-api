@@ -29,14 +29,8 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
-router.post('/logout', requireAuth, async (req, res, next) => {
-  try {
-    const { error } = await supabase.auth.admin.signOut(req.user.id);
-    if (error) return next(error);
-    res.json({ message: 'Logged out' });
-  } catch (err) {
-    next(err);
-  }
+router.post('/logout', requireAuth, (_req, res) => {
+  res.json({ message: 'Sesión cerrada' });
 });
 
 router.get('/me', requireAuth, (req, res) => {
