@@ -22,8 +22,6 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    console.log('[history/post] body:', req.body);
-    console.log('[history/post] user:', req.user?.id);
     const { from_code, to_code, amount, result, rate } = req.body;
     const { data, error } = await supabase
       .from('conversion_history')
