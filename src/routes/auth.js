@@ -43,6 +43,7 @@ router.get('/me', requireAuth, (req, res) => {
 router.get('/google', async (req, res, next) => {
   try {
     const callbackUrl = `${req.protocol}://${req.get('host')}/api/auth/callback`;
+    console.log('[google oauth] callbackUrl:', callbackUrl);
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: { redirectTo: callbackUrl },
